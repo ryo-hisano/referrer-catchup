@@ -2,15 +2,15 @@
 [![Build Status](https://img.shields.io/travis/ryo-hisano/referrer-catchup.svg)](https://travis-ci.org/ryo-hisano/referrer-catchup)
 [![Dependency Status](https://img.shields.io/david/ryo-hisano/referrer-catchup.svg)](https://david-dm.org/ryo-hisano/referrer-catchup)
 
-# ReferrerCatchUp とは
+# ReferrerCatchUp
 
 現在ページ URL についた GET パラメータを、特定の URL 飛び先が指定されたリンクにのみ付加する JavaScript プラグイン。
 ある広告経由からカートへの遷移時の効果計測のために利用。
 
-# 使い方
+## 使い方
 
 ```html
-<script src="https://cdn.jsdelivr.net/gh/ryo-hisano/referrer-catchup@1.0.0/ref.js" defer></script>
+<script src="https://cdn.jsdelivr.net/gh/ryo-hisano/referrer-catchup@1.0.0/dist/ref.js" defer></script>
 <script>
   (function() {
     var ref = new ReferrerCatchUp.Initialize({
