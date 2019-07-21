@@ -19,8 +19,7 @@ It is used to measure the effect at the time of transition from a certain advert
 
 ## Extended function
 
-| Options | Contents
-| Default value | Example |
-| --------------- | -------------------------------------------------------------------------------- | -------------- | -------------------------------------------- |
-| `allow_domains` | Domain Allow List. Change only the href that has the specified domain as the link destination. | None | ['google.co.jp'] |
-| `ignore_lists` | Parameter ban list. Specify a parameter that you do not want to add to href. | ['\*']（All） | ['utm_medium', 'utm_source', 'utm_campaign'] |
+| Options         | Contents                                                                                       | Default value | Example                                      |
+| --------------- | ---------------------------------------------------------------------------------------------- | ------------- | -------------------------------------------- |
+| `allow_domains` | Domain Allow List. Change only the href that has the specified domain as the link destination. | None          | ['google.co.jp']                             |
+| `ignore_lists`  | Parameter ban list. Specify a parameter that you do not want to add to href.                   | ['\*']（All） | ['utm_medium', 'utm_source', 'utm_campaign'] |
