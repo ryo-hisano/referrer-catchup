@@ -1,3 +1,7 @@
+[![NPM version](https://img.shields.io/npm/v/referrer-catchup.svg)](https://www.npmjs.com/package/referrer-catchup)
+[![Build Status](https://img.shields.io/travis/ryo-hisano/referrer-catchup.svg)](https://travis-ci.org/ryo-hisano/referrer-catchup)
+[![Dependency Status](https://img.shields.io/david/ryo-hisano/referrer-catchup.svg)](https://david-dm.org/ryo-hisano/referrer-catchup)
+
 # About ReferrerCatchUp
 
 A JavaScript plug-in that appends GET parameters attached to the current page URL only to links that specify a specific URL destination.
