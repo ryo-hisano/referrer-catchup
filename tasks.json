@@ -1,0 +1,30 @@
+{
+	"version": "0.1.0",
+	"command": "tsc",
+	"isShellCommand": true,
+	"windows": {
+		"command": "tsc.exe"
+	},
+	"tasks": [
+		{
+			"taskName": "build",
+			"isBuildCommand": true,
+			"suppressTaskName": true,
+			"args": [
+				"-p",
+				"."
+			],
+			"problemMatcher": "$tsc"
+		},
+		{
+			"taskName": "watch",
+			"isBuildCommand": false,
+			"isWatching": true,
+			"suppressTaskName": true,
+			"args": [
+				"-w"
+			],
+			"problemMatcher": "$tsc"
+		}
+	]
+}

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<title>TEST</title>
+</head>
+<body>
+<ul>
+	<li><a href="https://www.w3schools.com">Visit W3Schools</a></li>
+	<li><a href="#top">Go to top</a></li>
+	<li><a href="mailto:someone@example.com?Subject=Hello%20again">Send mail!</a></li>
+	<li><a href="mailto:someone@example.com?cc=someoneelse@example.com&bcc=andsomeoneelse@example.com&subject=Summer%20Party&body=You%20are%20invited%20to%20a%20big%20summer%20party!">Send mail!</a></li>
+	<li><a href="javascript:alert('Hello World!');">Execute JavaScript</a></li>
+	<li><a href="//www.google.co.jp/">Google</a></li>
+	<li><a href="http://www.google.co.jp/">Google</a></li>
+	<li><a href="https://www.google.co.jp/">Google</a></li>
+	<li><a href="https://www.google.co.jp/?bbbb=uuu">Google</a></li>
+	<li><a href="https://www.yahoo.co.jp/">Yahoo!</a></li>
+	<li><a href="test.html">相対パス</a></li>
+</ul>
+<script src="ref.js"></script>
+<script>
+(function() {
+	var ref = new ReferrerCatchUp.Initialize({
+		allow_domains: ['google.co.jp'],
+		ignore_lists: ['utm_medium', 'utm_source', 'utm_campaign']
+	});
+})();
+</script>
+</body>
+</html>
