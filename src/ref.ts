@@ -9,13 +9,17 @@ let ignore_lists: string[];
 
 module ReferrerCatchUp {
   export class Initialize {
-    constructor(obj: any) {
+    constructor(obj: { allow_domains: string[]; ignore_lists: string[] | null } = { allow_domains: ['*'], ignore_lists: [] }) {
       if (obj !== undefined) {
         allow_domains = obj.allow_domains;
-        ignore_lists = obj.ignore_lists;
+        if (obj.ignore_lists !== null) {
+          ignore_lists = obj.ignore_lists;
+        }
       }
       const QueryString: string = this.getQueryString(window.location.href);
-      if (!QueryString) return;
+      if (!QueryString) {
+        return;
+      }
       this.ankerLoop(QueryString);
     }
 
@@ -23,7 +27,7 @@ module ReferrerCatchUp {
     ankerLoop(param: string) {
       // ページ内全ての<a>要素
       const ankers = document.getElementsByTagName('a');
-      [].map.call(ankers, anker => {
+      Array.prototype.map.call(ankers, anker => {
         const href = anker.href;
         if (this.filterAllowDomain(href) && /^https?(:\/\/[-_.!~*\'()a-zA-Z0-9;\/?:\@&=+\$,%#]+)$/.test(href)) {
           // URLに?を含むか
@@ -39,7 +43,9 @@ module ReferrerCatchUp {
     // 現在URLからパラメータを配列化する関数
     getQueryString(url: string): string {
       // URLに?を含むか
-      if (url.indexOf('?') === -1) return '';
+      if (url.indexOf('?') === -1) {
+        return '';
+      }
 
       let temp: string[] = Array();
 
@@ -49,12 +55,14 @@ module ReferrerCatchUp {
       // パラメータ文字列
       let params: string = '';
 
-      [].map.call(keys, key => {
+      Array.prototype.map.call(keys, key => {
         // #（ハッシュ）入っていたら削除
         key = key.indexOf('#') !== -1 ? key.substring(0, key.indexOf('#')) : key;
 
         // 空の場合退避
-        if (key === '') return;
+        if (key === '') {
+          return;
+        }
 
         // パラメータ=値の形で配列化
         temp = key.split('=');

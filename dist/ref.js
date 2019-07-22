@@ -4,19 +4,23 @@ var ReferrerCatchUp;
 (function (ReferrerCatchUp) {
     var Initialize = (function () {
         function Initialize(obj) {
+            if (obj === void 0) { obj = { allow_domains: ['*'], ignore_lists: [] }; }
             if (obj !== undefined) {
                 allow_domains = obj.allow_domains;
-                ignore_lists = obj.ignore_lists;
+                if (obj.ignore_lists !== null) {
+                    ignore_lists = obj.ignore_lists;
+                }
             }
             var QueryString = this.getQueryString(window.location.href);
-            if (!QueryString)
+            if (!QueryString) {
                 return;
+            }
             this.ankerLoop(QueryString);
         }
         Initialize.prototype.ankerLoop = function (param) {
             var _this = this;
             var ankers = document.getElementsByTagName('a');
-            [].map.call(ankers, function (anker) {
+            Array.prototype.map.call(ankers, function (anker) {
                 var href = anker.href;
                 if (_this.filterAllowDomain(href) && /^https?(:\/\/[-_.!~*\'()a-zA-Z0-9;\/?:\@&=+\$,%#]+)$/.test(href)) {
                     if (anker.href.indexOf('?') === -1) {
@@ -30,15 +34,17 @@ var ReferrerCatchUp;
         };
         Initialize.prototype.getQueryString = function (url) {
             var _this = this;
-            if (url.indexOf('?') === -1)
+            if (url.indexOf('?') === -1) {
                 return '';
+            }
             var temp = Array();
             var keys = url.slice(url.indexOf('?') + 1).split('&');
             var params = '';
-            [].map.call(keys, function (key) {
+            Array.prototype.map.call(keys, function (key) {
                 key = key.indexOf('#') !== -1 ? key.substring(0, key.indexOf('#')) : key;
-                if (key === '')
+                if (key === '') {
                     return;
+                }
                 temp = key.split('=');
                 if (_this.filterReferrer(temp[0])) {
                     params += '&' + temp[0] + '=' + temp[1];
