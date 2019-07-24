@@ -1,19 +1,23 @@
 // 参照元のパラメータをリンクに付与するJavaScript。
 // 最初から付いているパラメータは現在URLに付いた値で上書きします。
 
-// （allow_domains）ドメイン許可リスト：デフォルト値「*（全て）」
-let allow_domains: string[] = ['*'];
-
-// （ignore_lists）パラメータ禁止リスト：デフォルト値「空」
-let ignore_lists: string[];
-
 module ReferrerCatchUp {
   export class Initialize {
-    constructor(obj: { allow_domains: string[]; ignore_lists: string[] | null } = { allow_domains: ['*'], ignore_lists: [] }) {
+    
+    // （allow_domains）ドメイン許可リスト：デフォルト値「*（全て）」
+    private allowDomains: string[] = ['*'];
+    
+    // （ignore_lists）パラメータ禁止リスト：デフォルト値「空」
+    private ignoreLists: string[] = [];
+    
+    constructor(obj: {
+      allow_domains: string[];
+      ignore_lists: string[];
+    }) {
       if (obj !== undefined) {
-        allow_domains = obj.allow_domains;
+        this.allowDomains = obj.allow_domains;
         if (obj.ignore_lists !== null) {
-          ignore_lists = obj.ignore_lists;
+          this.ignoreLists = obj.ignore_lists;
         }
       }
       const QueryString: string = this.getQueryString(window.location.href);
@@ -75,9 +79,9 @@ module ReferrerCatchUp {
 
     // パラメータ禁止リストに含まれていた場合に偽を返す関数
     filterReferrer(param: string): boolean {
-      if (ignore_lists) {
-        for (const ignore_list of ignore_lists) {
-          if (param === ignore_list) {
+      if (this.ignoreLists) {
+        for (const ignoreList of this.ignoreLists) {
+          if (param === ignoreList) {
             return false;
           }
         }
@@ -87,8 +91,8 @@ module ReferrerCatchUp {
 
     // ドメイン許可リストに含まれている場合に真を返す関数
     filterAllowDomain(href: string): boolean {
-      for (const allow_domain of allow_domains) {
-        if (allow_domain === '*' || href.indexOf(allow_domain) !== -1) {
+      for (const allowDomain of this.allowDomains) {
+        if (allowDomain === '*' || href.indexOf(allowDomain) !== -1) {
           return true;
         }
       }
