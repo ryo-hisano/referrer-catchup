@@ -1,14 +1,13 @@
-var allow_domains = ['*'];
-var ignore_lists;
 var ReferrerCatchUp;
 (function (ReferrerCatchUp) {
     var Initialize = (function () {
         function Initialize(obj) {
-            if (obj === void 0) { obj = { allow_domains: ['*'], ignore_lists: [] }; }
+            this.allowDomains = ['*'];
+            this.ignoreLists = [];
             if (obj !== undefined) {
-                allow_domains = obj.allow_domains;
+                this.allowDomains = obj.allow_domains;
                 if (obj.ignore_lists !== null) {
-                    ignore_lists = obj.ignore_lists;
+                    this.ignoreLists = obj.ignore_lists;
                 }
             }
             var QueryString = this.getQueryString(window.location.href);
@@ -53,10 +52,10 @@ var ReferrerCatchUp;
             return params;
         };
         Initialize.prototype.filterReferrer = function (param) {
-            if (ignore_lists) {
-                for (var _i = 0, ignore_lists_1 = ignore_lists; _i < ignore_lists_1.length; _i++) {
-                    var ignore_list = ignore_lists_1[_i];
-                    if (param === ignore_list) {
+            if (this.ignoreLists) {
+                for (var _i = 0, _a = this.ignoreLists; _i < _a.length; _i++) {
+                    var ignoreList = _a[_i];
+                    if (param === ignoreList) {
                         return false;
                     }
                 }
@@ -64,9 +63,9 @@ var ReferrerCatchUp;
             return true;
         };
         Initialize.prototype.filterAllowDomain = function (href) {
-            for (var _i = 0, allow_domains_1 = allow_domains; _i < allow_domains_1.length; _i++) {
-                var allow_domain = allow_domains_1[_i];
-                if (allow_domain === '*' || href.indexOf(allow_domain) !== -1) {
+            for (var _i = 0, _a = this.allowDomains; _i < _a.length; _i++) {
+                var allowDomain = _a[_i];
+                if (allowDomain === '*' || href.indexOf(allowDomain) !== -1) {
                     return true;
                 }
             }
