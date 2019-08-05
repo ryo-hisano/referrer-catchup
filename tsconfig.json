@@ -1,7 +1,7 @@
 {
     "compilerOptions": {
         "target": "es5",
-        "module": "UMD",
+        "module": "AMD",
         "outDir": "./dist",
         "moduleResolution": "node",
         "isolatedModules": false,
