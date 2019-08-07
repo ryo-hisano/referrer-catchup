@@ -19,10 +19,5 @@
     },
     "exclude": [
         "node_modules"
-    ],
-    "compileOnSave": true,
-    "buildOnSave": false,
-    "atom": {
-        "rewriteTsconfig": false
-    }
+    ]
 }

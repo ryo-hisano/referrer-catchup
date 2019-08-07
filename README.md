@@ -11,7 +11,7 @@ It is used to measure the effect at the time of transition from a certain advert
 
 ```html
 <script src="https://cdn.jsdelivr.net/gh/ryo-hisano/referrer-catchup@1.0.0/dist/ref.js" defer></script>
-<script>
+<script defer>
   new ReferrerCatchUp({
     allow_domains: ['google.co.jp'],
     ignore_lists: ['utm_medium', 'utm_source', 'utm_campaign']
