@@ -10,7 +10,7 @@ It is used to measure the effect at the time of transition from a certain advert
 ## How to use
 
 ```html
-<script src="https://cdn.jsdelivr.net/gh/ryo-hisano/referrer-catchup@1.0.1/dist/ref.js" defer></script>
+<script src="https://cdn.jsdelivr.net/gh/ryo-hisano/referrer-catchup@1.0.0/dist/ref.js" defer></script>
 <script defer>
   new ReferrerCatchUp({
     allow_domains: ['google.co.jp'],
