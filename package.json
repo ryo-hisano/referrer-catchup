@@ -1,6 +1,6 @@
 {
   "name": "referrer-catchup",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "",
   "main": "main.js",
   "directories": {
@@ -17,7 +17,7 @@
     "ejs": "^2.6.2",
     "express": "^4.17.1",
     "jest": "^24.8.0",
-    "jest-puppeteer": "^4.2.0",
-    "puppeteer": "^1.17.0"
+    "jest-puppeteer": "^4.3.0",
+    "puppeteer": "^1.19.0"
   }
 }
